@@ -36,7 +36,9 @@ RSpec.describe 'User Story 1, Doctor Index' do
     end
 
     it 'And I see that the doctors are listed in order of years practiced from most to least' do
-
+      expect(@doctor2.name).to appear_before(@doctor4.name)
+      expect(@doctor4.name).to appear_before(@doctor1.name)
+      expect(@doctor1.name).to appear_before(@doctor3.name)
     end
   end
 end
