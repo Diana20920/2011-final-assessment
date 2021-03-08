@@ -1,0 +1,21 @@
+<h1><%= @surgery.title %></h1>
+
+<h3>Taking place on: <%= @surgery.day_of_week %></h3>
+<h3>In operating room number <%= @surgery.operating_room_number %></h3>
+
+<section class="doctors">
+<h3>Doctors performing this surgery</h3>
+<ul>
+  <% @surgery.doctors.each do |doctor| %>
+  <div id="doctor-<%= doctor.id %>">
+    <li><%= doctor.name %></li>
+    <li><%= doctor.years_experience %> years of experience</li>
+  </div>
+  <% end %>
+</ul>
+</section>
+
+<div class="most-and-least">
+  <h4>Most experienced doctor:</h4>
+  <h4>Least experienced doctor:</h4>
+</div>
