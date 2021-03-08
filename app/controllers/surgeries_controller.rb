@@ -10,4 +10,8 @@ class SurgeriesController < ApplicationController
 
     redirect_to surgery_path(@surgery)
   end
+
+  def index
+    @surgeries = Surgery.all
+  end
 end
