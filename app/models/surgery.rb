@@ -9,4 +9,8 @@ class Surgery < ApplicationRecord
   def least_experienced_doctor
     doctors.order_by_most_experience.last
   end
+
+  def average_doctors_experience
+    doctors.average(:years_experience).ceil
+  end
 end

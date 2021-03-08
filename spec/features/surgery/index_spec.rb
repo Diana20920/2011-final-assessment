@@ -16,9 +16,28 @@ RSpec.describe 'Extension, Surgery Index' do
     end
 
     it 'I see each surgery including its title, day of week, and operating room number' do
+      expect(page).to have_content("Surgeries")
+      within("#surgery-#{@surgery1.id}") do
+        expect(page).to have_content(@surgery1.title)
+        expect(page).to have_content(@surgery1.day_of_week)
+        expect(page).to have_content(@surgery1.operating_room_number)
+      end
+      within("#surgery-#{@surgery2.id}") do
+        expect(page).to have_content(@surgery2.title)
+        expect(page).to have_content(@surgery2.day_of_week)
+        expect(page).to have_content(@surgery2.operating_room_number)
+      end
+      within("#surgery-#{@surgery3.id}") do
+        expect(page).to have_content(@surgery3.title)
+        expect(page).to have_content(@surgery3.day_of_week)
+        expect(page).to have_content(@surgery3.operating_room_number)
+      end
     end
 
     it 'And next to each surgery I see the average years practiced of doctors performing that surgery' do
+      within("#surgery-#{@surgery2.id}") do
+        expect(page).to have_content(@surgery2.average_doctors_experience)
+      end
     end
 
     it 'And I see that the surgeries on this page are ordered by average years practiced from greatest to least' do
