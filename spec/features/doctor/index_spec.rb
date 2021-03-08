@@ -18,9 +18,25 @@ RSpec.describe 'User Story 1, Doctor Index' do
         expect(page).to have_content("Years Practiced: #{@doctor1.years_experience}")
         expect(page).to have_content("Attended #{@doctor1.university} University")
       end
+      within("#doctors-#{@doctor2.id}") do
+        expect(page).to have_content("Name: #{@doctor2.name}")
+        expect(page).to have_content("Years Practiced: #{@doctor2.years_experience}")
+        expect(page).to have_content("Attended #{@doctor2.university} University")
+      end
+      within("#doctors-#{@doctor3.id}") do
+        expect(page).to have_content("Name: #{@doctor3.name}")
+        expect(page).to have_content("Years Practiced: #{@doctor3.years_experience}")
+        expect(page).to have_content("Attended #{@doctor3.university} University")
+      end
+      within("#doctors-#{@doctor4.id}") do
+        expect(page).to have_content("Name: #{@doctor4.name}")
+        expect(page).to have_content("Years Practiced: #{@doctor4.years_experience}")
+        expect(page).to have_content("Attended #{@doctor4.university} University")
+      end
     end
 
     it 'And I see that the doctors are listed in order of years practiced from most to least' do
+
     end
   end
 end
