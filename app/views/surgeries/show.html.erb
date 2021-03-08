@@ -16,6 +16,6 @@
 </section>
 
 <div class="most-and-least">
-  <h4>Most experienced doctor:</h4>
-  <h4>Least experienced doctor:</h4>
+  <h4>Most experienced doctor: <%= @surgery.most_experienced_doctor.name %> (<%= @surgery.most_experienced_doctor.years_experience %>)</h4>
+  <h4>Least experienced doctor: <%= @surgery.least_experienced_doctor.name %> (<%= @surgery.least_experienced_doctor.years_experience %>)</h4>
 </div>

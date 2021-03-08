@@ -49,7 +49,10 @@ RSpec.describe 'User Story 2, Surgery Show Page' do
     end
 
     it 'And in those two sections I see the two doctors who are performing this surgery in the appropriate section including their name and years practiced' do
-
+      within(".most-and-least") do
+        expect(page).to have_content("Most experienced doctor: #{@doctor2.name} (#{@doctor2.years_experience})")
+        expect(page).to have_content("Least experienced doctor: #{@doctor3.name} (#{@doctor3.years_experience})")
+      end
     end
   end
 end
