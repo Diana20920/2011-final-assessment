@@ -36,8 +36,9 @@ RSpec.describe 'Extension, Surgery Index' do
 
     it 'And next to each surgery I see the average years practiced of doctors performing that surgery' do
       within("#surgery-#{@surgery2.id}") do
-        expect(page).to have_content(@surgery2.average_doctors_experience)
+        expect(page).to have_content("Average years of practice for doctors: #{@surgery2.average_doctors_experience}")
       end
+      save_and_open_page
     end
 
     it 'And I see that the surgeries on this page are ordered by average years practiced from greatest to least' do

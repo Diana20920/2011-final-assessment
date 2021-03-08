@@ -4,7 +4,8 @@
   <ul>
     <% @surgeries.each do |surgery| %>
       <div id="surgery-<%= surgery.id %>">
-        <li><%= surgery.title %>, <%= surgery.day_of_week %>, <%= surgery.operating_room_number %></li><br>
+        <li><%= surgery.title %>, <%= surgery.day_of_week %>, <%= surgery.operating_room_number %></li>
+        <p>Average years of practice for doctors: <%= surgery.average_doctors_experience %></p><br>
       </div>
     <% end %>
   </ul>
