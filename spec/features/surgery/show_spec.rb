@@ -9,6 +9,7 @@ RSpec.describe 'User Story 2, Surgery Show Page' do
       @doctor2 = @surgery1.doctors.create!(name: "Carmen Daza", years_experience: 20, university: "Yale")
       @doctor3 = @surgery1.doctors.create!(name: "Andy Cooper", years_experience: 9, university: "George Mason")
       @doctor4 = @surgery1.doctors.create!(name: "Olivia Pope", years_experience: 15, university: "Harvard")
+      @doctor5 = Doctor.create!(name: "Ricardo François", years_experience: 12, university: "Oxford")
 
       visit surgery_path(@surgery1)
     end
@@ -52,6 +53,26 @@ RSpec.describe 'User Story 2, Surgery Show Page' do
       within(".most-and-least") do
         expect(page).to have_content("Most experienced doctor: #{@doctor2.name} (#{@doctor2.years_experience})")
         expect(page).to have_content("Least experienced doctor: #{@doctor3.name} (#{@doctor3.years_experience})")
+      end
+    end
+    describe 'User Story 3, Add a Doctor to a Surgery' do
+      it 'I see a field with instructions to Add A Doctor To This Surgery' do
+        expect(page).to have_content("Add A Doctor To This Surgery")
+        expect(page).to have_content("Please use the #ID of the doctor you wish to add to this surgery.")
+        expect(page).to have_field(:add_doctor)
+      end
+
+      it 'When I input the name of an existing Doctor into that field, click submit, I am taken back to that surgery show page where I see the name of that doctor listed on the page' do
+        fill_in :add_doctor, with: @doctor5.id
+        click_button("SUBMIT")
+
+        expect(current_path).to eq(surgery_path(@surgery1))
+        within(".doctors") do
+          within("#doctor-#{@doctor5.id}") do
+            expect(page).to have_content(@doctor5.name)
+            expect(page).to have_content("#{@doctor5.years_experience} years of experience")
+          end
+        end
       end
     end
   end
